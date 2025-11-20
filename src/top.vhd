@@ -3,8 +3,9 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 entity top is
+  -- TODO make N = 16
   generic (
-    N          : integer := 4;   -- For testing; change to 16 later
+    N          : integer := 4;
     DATA_WIDTH : integer := 16;
     ACC_WIDTH  : integer := 32
   );
@@ -12,13 +13,13 @@ entity top is
     clk   : in  std_logic;
     rst   : in  std_logic;
 
-    -- Flattened row inputs of matrix A (N elements × DATA_WIDTH)
+    -- flattened row inputs of matrix A (N elements × DATA_WIDTH)
     a_bus : in  std_logic_vector(N*DATA_WIDTH-1 downto 0);
 
-    -- Flattened column inputs of matrix B (N elements × DATA_WIDTH)
+    -- flattened column inputs of matrix B (N elements × DATA_WIDTH)
     b_bus : in  std_logic_vector(N*DATA_WIDTH-1 downto 0);
 
-    -- Output accumulators from each PE
+    -- output accumulators from each PE
     c_bus : out std_logic_vector(N*ACC_WIDTH-1 downto 0)
   );
 end entity top;
